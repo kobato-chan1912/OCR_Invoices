@@ -50,6 +50,12 @@ plot_gray(gray) # In ảnh grayscale
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 plot_gray(blurred)
 
+# Nhận diện các vùng trắng
+rectKernel = cv2.getStructuringElement(cv2.MORPH_RECT, (9, 9))
+dilated = cv2.dilate(blurred, rectKernel)
+plot_gray(dilated)
+
+
 # Hiển thị các Object trong hình dạng cạnh viền (nền đen)
 
 edged = cv2.Canny(dilated, 100, 200, apertureSize=3)
