@@ -33,6 +33,15 @@ def plot_rgb(image):
     return plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
 
+# Đọc ảnh
+image = cv2.imread(file_name)
+# Downscale image as finding receipt contour is more efficient on a small image
+resize_ratio = 500 / image.shape[0]
+original = image.copy()
+image = opencv_resize(image, resize_ratio)
+
+
+
 # Chuyển ảnh sang Grayscale 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 plot_gray(gray) # In ảnh grayscale 
